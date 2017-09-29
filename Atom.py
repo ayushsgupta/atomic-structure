@@ -28,3 +28,12 @@ class Atom:
     
     def getConfiguration(self):
         return self.configuration
+    
+    def getOrbitals(self):
+        return self.orbitals
+    
+    def getOrbital(self, which):
+        if which in [0:len(orbitals)]:
+            return self.orbitals[which]
+        else:
+            return self.orbitals[-1]
