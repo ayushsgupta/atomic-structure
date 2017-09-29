@@ -29,7 +29,7 @@ class Orbital:
             self.max_capacity = 14
 
     def __str__(self):
-        return "<Orbital: n = %s, l = %s (%s), num_electrons = %s, max_capacity = %s>" % (self.pqn, self.azqn, Constants.AZDICT2[self.azqn], len(self.electrons), self.max_capacity)
+        return "<Orbital: n = %s, l = %s (%s), num_electrons = %s, max_capacity = %s>" % (self.pqn, self.azqn, getAzqn_asChar(), len(self.electrons), self.max_capacity)
 
     def addElectron(self):
         if len(self.electrons) < self.max_capacity:
@@ -38,3 +38,21 @@ class Orbital:
             else:
                 set_spin = 0.5
             self.electrons.append(Electron(self.pqn, self.azqn, set_spin))
+            
+    def getPqn(self):
+        return self.pqn
+    
+    def getAzqn(self):
+        return self.azqn
+    
+    def getAzqn_asChar(self):
+        return Constants.AZDICT2[self.azqn]
+    
+    def getMaxCapacity(self):
+        return self.max_capacity
+    
+    def getNumElectrons(self):
+        return len(self.electrons)
+    
+    def getEmptySpaces(self):
+        return getMaxCapacity() - getNumElectrons()
