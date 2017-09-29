@@ -34,7 +34,7 @@ class Orbital:
     def addElectron(self):
         if len(self.electrons) < self.max_capacity:
             if self.electrons:
-                set_spin = (self.electrons[0].get_sqn()) * -1
+                set_spin = (self.electrons[0].getSqn()) * -1
             else:
                 set_spin = 0.5
             self.electrons.append(Electron(self.pqn, self.azqn, set_spin))
@@ -47,6 +47,9 @@ class Orbital:
     
     def getAzqn_asChar(self):
         return Constants.AZDICT2[self.azqn]
+    
+    def getElectrons(self):
+        return self.electrons
     
     def getMaxCapacity(self):
         return self.max_capacity
