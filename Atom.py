@@ -8,7 +8,10 @@ from Orbital import Orbital
 class Atom:
 
     def __init__(self, configuration):
-        self.configuration = configuration
+        if len(configuration) < 3:
+            self.configuration = Constants.CONFIGURATION(configuration) # Need to add error handling
+        else:
+            self.configuration = configuration
         self.orbitals = list()
         self.fillOrbitals()
 
@@ -22,3 +25,6 @@ class Atom:
                 num_electrons = int(o[2])
             for x in range(0, num_electrons):
                 self.orbitals[-1].addElectron()
+    
+    def getConfiguration(self):
+        return self.configuration
