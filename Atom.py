@@ -33,7 +33,7 @@ class Atom:
         return self.orbitals
     
     def getOrbital(self, which):
-        if which in [0:len(orbitals)]:
+        if which in [0:len(self.orbitals)]:
             return self.orbitals[which]
         else:
             return self.orbitals[-1]
