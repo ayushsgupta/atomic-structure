@@ -51,6 +51,12 @@ class Orbital:
     def getElectrons(self):
         return self.electrons
     
+    def getElectron(self, which):
+        if which in [0:len(self.electrons)]:
+            return self.electrons[which]
+        else:
+            return self.electrons[0]
+    
     def getMaxCapacity(self):
         return self.max_capacity
     
