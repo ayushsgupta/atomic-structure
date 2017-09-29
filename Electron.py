@@ -40,16 +40,16 @@ class Electron:
       def __str__(self):
           return "<Electron: n = %s, l = %s, s = %s>" % (self.pqn, self.azqn, self.sqn)
 
-      def get_pqn(self):
+      def getPqn(self):
           return self.pqn
 
-      def get_azqn(self):
+      def getAzqn(self):
           return self.azqn
 
       '''
-      def get_mqn(self):
+      def getMqn(self):
           return self.mqn
       '''
 
-      def get_sqn(self):
+      def getSqn(self):
           return self.sqn
