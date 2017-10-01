@@ -1,5 +1,6 @@
 import Constants
 from Atom import Atom
 
-a = Atom("5f14")
-print(a.getOrbital(0))
+cu = Atom('Cu')
+cu.ionize(2)
+print(cu.getSymbol())

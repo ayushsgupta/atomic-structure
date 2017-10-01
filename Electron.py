@@ -37,6 +37,9 @@ class Electron:
           else:
               self.sqn = 0.5
 
+          self.atomic_mass = 0
+          self.charge = -1
+
       def __str__(self):
           return "<Electron: n = %s, l = %s, s = %s>" % (self.pqn, self.azqn, self.sqn)
 
@@ -53,3 +56,9 @@ class Electron:
 
       def getSqn(self):
           return self.sqn
+
+      def getAtomicMass(self):
+          return self.atomic_mass
+
+      def getElectronCharge(self):
+          return self.charge

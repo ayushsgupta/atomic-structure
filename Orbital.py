@@ -29,7 +29,7 @@ class Orbital:
             self.max_capacity = 14
 
     def __str__(self):
-        return "<Orbital: n = %s, l = %s (%s), num_electrons = %s, max_capacity = %s>" % (self.pqn, self.azqn, getAzqn_asChar(), len(self.electrons), self.max_capacity)
+        return "<Orbital: n = %s, l = %s (%s), num_electrons = %s, max_capacity = %s>" % (self.pqn, self.azqn, self.getAzqn_asChar(), len(self.electrons), self.max_capacity)
 
     def addElectron(self):
         if len(self.electrons) < self.max_capacity:
@@ -38,30 +38,45 @@ class Orbital:
             else:
                 set_spin = 0.5
             self.electrons.append(Electron(self.pqn, self.azqn, set_spin))
-            
+
     def getPqn(self):
         return self.pqn
-    
+
     def getAzqn(self):
         return self.azqn
-    
+
     def getAzqn_asChar(self):
         return Constants.AZDICT2[self.azqn]
-    
+
     def getElectrons(self):
         return self.electrons
-    
+
     def getElectron(self, which):
-        if which in [0:len(self.electrons)]:
+        if which in range(0, len(self.electrons)):
             return self.electrons[which]
         else:
             return self.electrons[0]
-    
+
     def getMaxCapacity(self):
         return self.max_capacity
-    
+
     def getNumElectrons(self):
         return len(self.electrons)
-    
+
     def getEmptySpaces(self):
-        return getMaxCapacity() - getNumElectrons()
+        return self.getMaxCapacity() - self.getNumElectrons()
+
+    def isEmpty(self):
+        return self.getEmptySpaces() is 0
+
+    def getShortForm(self):
+        return "%s%s%s" % (self.getPqn(), self.getAzqn_asChar(), self.getNumElectrons())
+
+    def getOrbitalCharge(self):
+        charge = 0
+        for e in self.electrons:
+            charge += e.getElectronCharge()
+        return charge
+
+    def ionize(self):
+        self.electrons.pop()
