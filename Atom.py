@@ -47,10 +47,10 @@ class Atom:
             return self.orbitals[-1]
 
     def getNumElectrons(self):
-        num_electrons = 0
+        n = 0
         for o in self.orbitals:
-            num_electrons += o.getNumElectrons()
-        return num_electrons
+            n += o.getNumElectrons()
+        return n
 
     def getAtomicNumber(self):
         return self.nucleus.getNumProtons()
@@ -68,11 +68,12 @@ class Atom:
     def ionize(self, n = 1):
         i = -1
         for t in range(0, n):
-            while i >= (-len(self.orbitals) - 1):
+            while i >= (-1 * len(self.orbitals)):
                 if not self.orbitals[i].isEmpty():
                     self.orbitals[i].ionize()
                     break
-                i -= 1
+                else:
+                    i -= 1
 
     def getSymbol(self):
         if self.getCharge() is 0:

@@ -67,7 +67,7 @@ class Orbital:
         return self.getMaxCapacity() - self.getNumElectrons()
 
     def isEmpty(self):
-        return self.getEmptySpaces() is 0
+        return len(self.electrons) is 0
 
     def getShortForm(self):
         return "%s%s%s" % (self.getPqn(), self.getAzqn_asChar(), self.getNumElectrons())
