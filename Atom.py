@@ -5,6 +5,7 @@ from Orbital import Orbital
 from Nucleus import Nucleus
 
 # 9-27-17
+# Latest update 10-2-17
 
 class Atom:
 
@@ -66,6 +67,11 @@ class Atom:
         return charge
 
     def ionize(self, n = 1):
+        if n > self.getNumElectrons():
+            n = self.getNumElectrons()
+        elif n < 0:
+            n = 0
+
         i = -1
         for t in range(0, n):
             while i >= (-1 * len(self.orbitals)):
@@ -78,7 +84,11 @@ class Atom:
     def getSymbol(self):
         if self.getCharge() is 0:
             return self.symbol
-        elif self.getCharge > 0:
+        elif self.getCharge() is 1:
+            return "%s+" % (self.symbol)
+        elif self.getCharge() > 1:
             return "%s%d+" % (self.symbol, self.getCharge())
+        elif self.getCharge() is -1:
+            return "%s-" % (self.symbol)
         else:
             return "%s%d-" % (self.symbol, -self.getCharge())
